@@ -82,7 +82,7 @@ class DataExtractionAndPusher:
 
 if __name__ == "__main__":
     try:
-        data_pusher = DataExtractionAndPusher(database="ai", collection="NetworkData", mongo_uri=MONGO_URI)
+        data_pusher = DataExtractionAndPusher(database="mlops", collection="NetworkData", mongo_uri=MONGO_URI)
         records = data_pusher.csv_to_json_converter("Network_Data/phisingData.csv")
         df = pd.DataFrame(records)
         data_pusher.insert_dataframe(df)
