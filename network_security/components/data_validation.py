@@ -6,7 +6,7 @@ from network_security.entity.artifact_entity import DataValidationArtifact
 from scipy.stats import ks_2samp
 import os, sys, pandas as pd
 from network_security.constants.training_pipeline import SCHEMA_FILE_PATH
-from network_security.utils.main_utils.utils import read_yaml, write_yaml_file
+from network_security.utils.main_utils.utils import write_yaml_file, read_yaml
 
 
 class DataValidation:
