@@ -1,4 +1,4 @@
-import pymongo
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import os
@@ -7,7 +7,6 @@ import json
 from dotenv import load_dotenv
 import certifi
 import pandas as pd
-import numpy as np
 from network_security.logging import logger
 from network_security.exceptions.exception import NetworkSecurityException
 
@@ -43,8 +42,8 @@ class DataExtractionAndPusher:
             logger.logging.info(f"Connexion établie avec MongoDB: {self.database_name}.{self.collection_name}")
         except Exception as e:
             raise NetworkSecurityException(e, sys)
-
-    def csv_to_json_converter(self, filepath: str) -> list:
+    @staticmethod
+    def csv_to_json_converter( filepath: str) -> list:
         """
         Convertit un fichier CSV en liste de dictionnaires JSON.
 
@@ -55,9 +54,9 @@ class DataExtractionAndPusher:
             logger.logging.info(f"Conversion du fichier CSV en JSON: {filepath}")
             dataframe = pd.read_csv(filepath)
             dataframe.reset_index(inplace=True, drop=True)
-            records = json.loads(dataframe.to_json(orient="records"))
-            logger.logging.info(f"Conversion réussie. Nombre d'enregistrements: {len(records)}")
-            return records
+            record = json.loads(dataframe.to_json(orient="records"))
+            logger.logging.info(f"Conversion réussie. Nombre d'enregistrements: {len(record)}")
+            return record
         except Exception as e:
             raise NetworkSecurityException(e, sys)
 
@@ -69,8 +68,8 @@ class DataExtractionAndPusher:
         """
         try:
             logger.logging.info(f"Insertion de {len(dataframe)} enregistrements dans MongoDB...")
-            records = dataframe.to_dict(orient="records")
-            self.collection.insert_many(records)
+            record = dataframe.to_dict(orient="records")
+            self.collection.insert_many(record)
             logger.logging.info("Insertion réussie dans MongoDB.")
         except Exception as e:
             raise NetworkSecurityException(e,sys)

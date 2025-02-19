@@ -15,7 +15,7 @@ FILE_NAME: str = "phisingData.csv"
 TRAIN_FILE_NAME: str = "train.csv"
 TEST_FILE_NAME: str = "test.csv"
 
-SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
+SCHEMA_FILE_PATH = 'data_schema/schema.yml'
 
 SAVED_MODEL_DIR =os.path.join("saved_models")
 MODEL_FILE_NAME = "model.pkl"
@@ -29,3 +29,15 @@ DATA_INGESTION_DIR_NAME:str = 'data_ingestion'
 DATA_INGESTION_FEATURE_STORE_DIR:str = 'feature_store'
 DATA_INGESTED_DIR_NAME:str = 'data_ingested'
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO:float = 0.25
+
+
+"""
+constantes relative a la validation des donnees
+"""
+DATA_VALIDATION_DIR_NAME: str = "data_validation"
+DATA_VALIDATION_VALID_DIR: str = "validated"
+DATA_VALIDATION_INVALID_DIR: str = "invalid"
+DATA_VALIDATION_DRIFT_REPORT_DIR: str = "drift_report"
+DATA_VALIDATION_DRIFT_REPORT_FILE_NAME: str = "report.yaml"
+PREPROCESSING_OBJECT_FILE_NAME = "preprocessing.pkl"
+
